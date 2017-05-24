@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: 53ffb7427009b8c43aa69e61ba00c9af
+timeCreated: 1467132838
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bigguydesign_0
+    21300002: bigguydesign_1
+    21300004: bigguydesign_2
+    21300006: bigguydesign_3
+    21300008: bigguydesign_4
+    21300010: bigguydesign_5
+    21300012: bigguydesign_6
+    21300014: bigguydesign_7
+    21300016: bigguydesign_8
+    21300018: bigguydesign_9
+    21300020: bigguydesign_10
+    21300022: bigguydesign_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: bigguydesign_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 500
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_3
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 400
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_5
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 300
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 200
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_9
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 100
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bigguydesign_11
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: 99d39a00ae474484ebf708a0d9145a80
+timeCreated: 1466614219
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: imp_sheet_0
+    21300002: imp_sheet_1
+    21300004: imp_sheet_2
+    21300006: imp_sheet_3
+    21300008: imp_sheet_4
+    21300010: imp_sheet_5
+    21300012: imp_sheet_6
+    21300014: imp_sheet_7
+    21300016: imp_sheet_8
+    21300018: imp_sheet_9
+    21300020: imp_sheet_10
+    21300022: imp_sheet_11
+    21300024: imp_sheet_12
+    21300026: imp_sheet_13
+    21300028: imp_sheet_14
+    21300030: imp_sheet_15
+    21300032: imp_sheet_16
+    21300034: imp_sheet_17
+    21300036: imp_sheet_18
+    21300038: imp_sheet_19
+    21300040: imp_sheet_20
+    21300042: imp_sheet_21
+    21300044: imp_sheet_22
+    21300046: imp_sheet_23
+    21300048: imp_sheet_24
+    21300050: imp_sheet_25
+    21300052: imp_sheet_26
+    21300054: imp_sheet_27
+    21300056: imp_sheet_28
+    21300058: imp_sheet_29
+    21300060: imp_sheet_30
+    21300062: imp_sheet_31
+    21300064: imp_sheet_32
+    21300066: imp_sheet_33
+    21300068: imp_sheet_34
+    21300070: imp_sheet_35
+    21300072: imp_sheet_36
+    21300074: imp_sheet_37
+    21300076: imp_sheet_38
+    21300078: imp_sheet_39
+    21300080: imp_sheet_40
+    21300082: imp_sheet_41
+    21300084: imp_sheet_42
+    21300086: imp_sheet_43
+    21300088: imp_sheet_44
+    21300090: imp_sheet_45
+    21300092: imp_sheet_46
+    21300094: imp_sheet_47
+    21300096: imp_sheet_48
+    21300098: imp_sheet_49
+    21300100: imp_sheet_50
+    21300102: imp_sheet_51
+    21300104: imp_sheet_52
+    21300106: imp_sheet_53
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: imp_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 316
+        width: 41
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 318
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 324
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 326
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 324
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 317
+        width: 39
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 326
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 322
+        width: 38
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 316
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 327
+        width: 33
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 313
+        width: 39
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 315
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 257
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 258
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 259
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 255
+        width: 37
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 256
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 253
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 255
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 255
+        width: 33
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 241
+        width: 49
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 245
+        width: 32
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 252
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 254
+        width: 34
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 193
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 192
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 193
+        width: 45
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 193
+        width: 42
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 193
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 193
+        width: 33
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 184
+        width: 32
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 175
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 178
+        width: 59
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 139
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 139
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 130
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_36
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 129
+        width: 31
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_37
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 129
+        width: 34
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_38
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 129
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_39
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 121
+        width: 39
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_40
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 85
+        width: 53
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_41
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 110
+        width: 41
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_42
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 112
+        width: 40
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 57
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_44
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 49
+        width: 58
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_45
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 49
+        width: 46
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_46
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 49
+        width: 49
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_47
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 49
+        width: 55
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_48
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 42
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_49
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 57
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_50
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 49
+        width: 57
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_51
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 49
+        width: 57
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_52
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 56
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: imp_sheet_53
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 4
+        width: 56
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
