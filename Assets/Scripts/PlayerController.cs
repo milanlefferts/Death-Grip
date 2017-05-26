@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
 		weapons = GameObject.FindGameObjectWithTag ("Weapons");
 		weaponsAnim = weapons.GetComponent<Animator> ();
 
-
-
 		leftWeapon = weapons.transform.Find ("LeftWeapon").gameObject;
 		leftWeaponAnim = leftWeapon.GetComponent<Animator> ();
 

@@ -9,11 +9,13 @@ public class ArrowMover : MonoBehaviour {
 		GetComponent<Rigidbody>().velocity = transform.forward * speed;
 		//GetComponent<Rigidbody> ().rotation = Quaternion.Euler (90.0f, 0.0f, 0.0f);
 		GetComponent<Rigidbody> ().rotation = Quaternion.identity;
+
+		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.02f, 0.2f));
 	}
 
 	void OnCollisionEnter(Collision other) {
 		//GetComponent<Rigidbody> ().isKinematic = true;
-		Destroy (this.gameObject);
+	//	Destroy (this.gameObject);
 		//print ("hit");
 
 	}

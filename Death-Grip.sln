@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Death-Grip", "Assembly-CSharp-firstpass.csproj", "{369FE873-14C1-17CE-CA3C-16C4CDA34926}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Death-Grip", "Assembly-CSharp.csproj", "{BB8DBFCA-849D-8FEC-1B5F-C418B1047109}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Death-Grip", "Assembly-CSharp-firstpass.csproj", "{369FE873-14C1-17CE-CA3C-16C4CDA34926}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB8DBFCA-849D-8FEC-1B5F-C418B1047109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BB8DBFCA-849D-8FEC-1B5F-C418B1047109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB8DBFCA-849D-8FEC-1B5F-C418B1047109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB8DBFCA-849D-8FEC-1B5F-C418B1047109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369FE873-14C1-17CE-CA3C-16C4CDA34926}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
