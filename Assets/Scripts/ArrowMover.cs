@@ -10,7 +10,7 @@ public class ArrowMover : MonoBehaviour {
 		//GetComponent<Rigidbody> ().rotation = Quaternion.Euler (90.0f, 0.0f, 0.0f);
 		GetComponent<Rigidbody> ().rotation = Quaternion.identity;
 
-		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.02f, 0.2f));
+		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.01f, 0.2f));
 	}
 
 	void OnCollisionEnter(Collision other) {

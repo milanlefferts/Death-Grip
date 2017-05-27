@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\ArrowMover.cs" />
      <Compile Include="Assets\Scripts\ArrowShooter.cs" />
      <Compile Include="Assets\Scripts\CameraPixel.cs" />
+     <Compile Include="Assets\Scripts\EventManager.cs" />
+     <Compile Include="Assets\Scripts\HealthPickup.cs" />
      <Compile Include="Assets\Scripts\LoadGame.cs" />
      <Compile Include="Assets\Scripts\NarrationSystem.cs" />
      <Compile Include="Assets\Scripts\Pixelate\Pixelate.cs" />

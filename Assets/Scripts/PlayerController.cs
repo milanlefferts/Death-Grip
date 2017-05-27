@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+
+	public int life;
+
 	public bool isMoving;
 	GameObject weapons, leftWeapon, rightWeapon;
 	Animator weaponsAnim, leftWeaponAnim, rightWeaponAnim;
@@ -16,6 +19,20 @@ public class PlayerController : MonoBehaviour
 
 		rightWeapon = weapons.transform.Find ("RightWeapon").gameObject;
 		rightWeaponAnim = rightWeapon.GetComponent<Animator> ();
+
+		life = 100;
+
+		EventManager.HealthPickupEvent += ChangeHealth;
+		EventManager.HealthPickupEvent += PrintHealth;
+
+	}
+
+	void ChangeHealth() {
+		life += 20;
+	}
+
+	void PrintHealth() {
+		Debug.Log ("Your health is now " + life);
 	}
 
 	void Update ()
