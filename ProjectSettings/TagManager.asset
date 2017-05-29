@@ -4,16 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - EnemySpawner
   - Enemy
-  - PositiveArrow
-  - Lover0
-  - Lover1
-  - NegativeArrow
-  - LoveMeter
   - Weapons
   - LeftWeapon
   - RightWeapon
+  - Trigger
+  - Wall
+  - Item
+  - PositiveArrow
+  - Grate
   layers:
   - Default
   - TransparentFX
@@ -50,4 +49,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Wall
+    uniqueID: 3453227285
+    locked: 0
+  - name: Door
+    uniqueID: 2569048545
+    locked: 0
+  - name: Ceiling
+    uniqueID: 2301128983
+    locked: 0
+  - name: Items
+    uniqueID: 3645699303
+    locked: 0
+  - name: Character
+    uniqueID: 3485146753
+    locked: 0
+  - name: Projectile
+    uniqueID: 3268284635
     locked: 0

@@ -16,14 +16,23 @@ public class EventManager : MonoBehaviour {
 	void Start () {
 		instance = this;
 	}
-		
 
-	// Health Pickup
-	public static event Action HealthPickupEvent;
-	public void HealthPickup() {
-		HealthPickupEvent ();
+	public delegate void SingleParameterDelegate<T> (T para);
+
+	public static event SingleParameterDelegate<int> HealthPickupEvent;
+	public void HealthPickup(int health) {
+		HealthPickupEvent (health);
 	}
 
+	public static event Action HealthChangeEvent;
+	public void HealthChange() {
+		HealthChangeEvent ();
+	}
+
+	public static event Action OpenDoorEvent;
+	public void OpenDoor() {
+		OpenDoorEvent ();
+	}
 
 
 }

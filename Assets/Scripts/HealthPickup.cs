@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPickup : MonoBehaviour {
-	AudioSource audio;
-	SpriteRenderer sprite;
-	private bool pickedup;
-	void Start () {
+
+	[HideInInspector]
+	protected AudioSource audio;
+	[HideInInspector]
+	protected SpriteRenderer sprite;
+
+	public int healthGain;
+
+	protected bool pickedup;
+
+	protected virtual void Start () {
 		audio = GetComponent<AudioSource> ();
 		sprite = GetComponent<SpriteRenderer> ();
 	}
-	void OnTriggerEnter(Collider other) {
+
+	protected void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player" && !pickedup) {
 			StartCoroutine(Pickedup());
-
 		}
 	}
 
-	private IEnumerator Pickedup() {
-		EventManager.Instance.HealthPickup();
+	protected IEnumerator Pickedup() {
+		EventManager.Instance.HealthPickup(healthGain);
 		pickedup = true;
 		audio.Play ();
 		sprite.enabled = false;
@@ -26,5 +33,4 @@ public class HealthPickup : MonoBehaviour {
 
 		Destroy (this.gameObject);
 	}
-
 }

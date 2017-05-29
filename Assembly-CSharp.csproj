@@ -51,19 +51,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ArrowMover.cs" />
-     <Compile Include="Assets\Scripts\ArrowShooter.cs" />
      <Compile Include="Assets\Scripts\CameraPixel.cs" />
+     <Compile Include="Assets\Scripts\Door.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EventManager.cs" />
      <Compile Include="Assets\Scripts\HealthPickup.cs" />
-     <Compile Include="Assets\Scripts\LoadGame.cs" />
+     <Compile Include="Assets\Scripts\HealthPickupLarge.cs" />
+     <Compile Include="Assets\Scripts\HealthPickupSmall.cs" />
      <Compile Include="Assets\Scripts\NarrationSystem.cs" />
      <Compile Include="Assets\Scripts\Pixelate\Pixelate.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\PlayerShooting.cs" />
+     <Compile Include="Assets\Scripts\ProjectileCollision.cs" />
      <Compile Include="Assets\Scripts\ScreenShake.cs" />
+     <Compile Include="Assets\Scripts\SortingLayer.cs" />
      <Compile Include="Assets\Scripts\SpriteDirection.cs" />
      <Compile Include="Assets\Scripts\SpriteRotation.cs" />
-     <None Include="Assets\Scripts\PixelShader.shader" />
+     <Compile Include="Assets\Scripts\UIController.cs" />
+     <None Include="Assets\Scripts\Pixelate\PixelShader.shader" />
      <None Include="Assets\Scripts\Pixelate\Pixelate.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 2017.1.0b5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

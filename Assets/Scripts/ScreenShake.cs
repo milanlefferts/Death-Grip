@@ -27,15 +27,12 @@ public class ScreenShake : MonoBehaviour {
 	}
 
 	public IEnumerator ScreenShaker (float strength, float duration) {
-		print ("shaking");
 		isShaking = true;
 
 		float shakeDuration = duration;
 		float shakeStrength = strength;
 		Vector3 originalPos = transform.localPosition;
 		Vector3 originalRot = transform.localEulerAngles;
-
-
 
 		while (shakeTime < shakeDuration) {
 
@@ -52,10 +49,7 @@ public class ScreenShake : MonoBehaviour {
 			transform.localEulerAngles = new Vector3 (originalRot.x, originalRot.y, x);
 			shakeTime += Time.deltaTime;  
 
-
 			yield return null;
-
-
 		}
 
 		// Reset
