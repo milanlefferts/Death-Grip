@@ -30,6 +30,6 @@ public class PlayerShooting : MonoBehaviour {
 		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.01f, 0.1f));
 
 		// Play gunshot audio
-		Player.Instance.audio.PlayOneShot (projectileFireSound);
+		Player.Instance.audioSource.PlayOneShot (projectileFireSound);
 	}
 }

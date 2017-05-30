@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
-	public GameObject imgObj, textObj;
+	public GameObject imgObj, textObj,damageOverlayObj;
 	private Text text;
 	//private Image img;
 
@@ -15,17 +15,22 @@ public class UIController : MonoBehaviour {
 
 		EventManager.HealthChangeEvent += SetHealthText;
 
-		EventManager.PlayerDamageEvent += SetHealthText;
-		EventManager.PlayerDamageEvent += DamageTakenEffect;
+		EventManager.PlayerDamageUIEvent += DamageTakenEffectWrapper;
 
 	}
 
-	void SetHealthText() {
+	private void SetHealthText() {
 		text.text = Player.Instance.life + "";
 	}
 
-	void DamageTakenEffect() {
-		print ("BIG VISUAL FEEDBACK!");
+	private void DamageTakenEffectWrapper() {
+		StartCoroutine (DamageTakenEffect ());	}
+
+	private IEnumerator DamageTakenEffect() {
+		damageOverlayObj.SetActive (true);
+		yield return new WaitForSeconds (0.1f);
+		damageOverlayObj.SetActive (false);
+
 	}
 
 }

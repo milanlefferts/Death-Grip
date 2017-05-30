@@ -21,7 +21,9 @@ public class Player : MonoBehaviour
 
 	public GameObject weapons, leftWeapon, rightWeapon;
 	private Animator weaponsAnim, leftWeaponAnim, rightWeaponAnim;
-	public new AudioSource audio;
+	public AudioSource audioSource;
+
+	public AudioClip playerDamageSound;
 
 	private KeyCode activateKey;
 
@@ -35,17 +37,22 @@ public class Player : MonoBehaviour
 
 		activateKey = KeyCode.E;
 
-		audio = GetComponent<AudioSource> ();
+		audioSource = GetComponent<AudioSource> ();
 
 		life = 100;
 		weaponDamage = 1;
 		isOpeningDoor = false;
 
 		EventManager.HealthPickupEvent += ChangeHealth;
-
+		EventManager.PlayerDamageEvent += ChangeHealth;
 	}
 
 	void ChangeHealth(int healthChange) {
+		if (healthChange < 0) {
+			
+			TakeDamage ();
+		}
+
 		life += healthChange;
 		EventManager.Instance.HealthChange();
 
@@ -54,6 +61,12 @@ public class Player : MonoBehaviour
 		} else if (life < 1) {
 			Die ();
 		}
+	}
+
+	void TakeDamage () {
+		EventManager.Instance.PlayerDamageUI();
+
+		audioSource.PlayOneShot(playerDamageSound);
 	}
 
 	void Die () {

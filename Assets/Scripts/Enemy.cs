@@ -52,11 +52,14 @@ public class Enemy : MonoBehaviour {
 		// Stop all movement on death
 		if (GetComponent<EnemyMovement> () != null) {
 			GetComponent <EnemyMovement> ().isActivated = false;
+
+		}
+
+		if (GetComponent<EnemyAttack> () != null) {
+			GetComponent <EnemyAttack> ().isAttacking = false;
 		}
 
 		boxCollider.enabled = false;
-
 		audioSource.PlayOneShot (enemyDeath);
-
 	}
 }

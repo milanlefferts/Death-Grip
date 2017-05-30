@@ -29,9 +29,14 @@ public class EventManager : MonoBehaviour {
 		HealthChangeEvent ();
 	}
 
-	public static event Action PlayerDamageEvent;
-	public void PlayerDamage() {
-		PlayerDamageEvent ();
+	public static event SingleParameterDelegate<int> PlayerDamageEvent;
+	public void PlayerDamage(int damage) {
+		PlayerDamageEvent (damage);
+	}
+
+	public static event Action PlayerDamageUIEvent;
+	public void PlayerDamageUI() {
+		PlayerDamageUIEvent ();
 	}
 
 	public static event Action OpenDoorEvent;
