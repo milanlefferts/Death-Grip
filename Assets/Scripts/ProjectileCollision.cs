@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ProjectileCollision : MonoBehaviour {
 	
-	private AudioSource audio;
-	private SphereCollider collider;
+	private new AudioSource audio;
+	private new SphereCollider collider;
 	private SpriteRenderer sprite;
 	public AudioClip projectileImpactSound;
 	private Animator anim;

@@ -7,13 +7,16 @@ public class UIController : MonoBehaviour {
 
 	public GameObject imgObj, textObj;
 	private Text text;
-	private Image img;
+	//private Image img;
 
 	void Start () {
 		text = textObj.GetComponent<Text> ();
-		img = imgObj.GetComponent<Image> ();
+		//img = imgObj.GetComponent<Image> ();
 
 		EventManager.HealthChangeEvent += SetHealthText;
+
+		EventManager.PlayerDamageEvent += SetHealthText;
+		EventManager.PlayerDamageEvent += DamageTakenEffect;
 
 	}
 
@@ -21,5 +24,8 @@ public class UIController : MonoBehaviour {
 		text.text = Player.Instance.life + "";
 	}
 
+	void DamageTakenEffect() {
+		print ("BIG VISUAL FEEDBACK!");
+	}
 
 }

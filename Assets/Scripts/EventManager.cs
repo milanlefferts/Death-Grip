@@ -29,6 +29,11 @@ public class EventManager : MonoBehaviour {
 		HealthChangeEvent ();
 	}
 
+	public static event Action PlayerDamageEvent;
+	public void PlayerDamage() {
+		PlayerDamageEvent ();
+	}
+
 	public static event Action OpenDoorEvent;
 	public void OpenDoor() {
 		OpenDoorEvent ();

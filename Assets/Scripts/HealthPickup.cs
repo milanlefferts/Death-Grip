@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthPickup : MonoBehaviour {
 
 	[HideInInspector]
-	protected AudioSource audio;
+	protected new AudioSource audio;
 	[HideInInspector]
 	protected SpriteRenderer sprite;
 

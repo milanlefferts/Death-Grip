@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
 	public GameObject weapons, leftWeapon, rightWeapon;
 	private Animator weaponsAnim, leftWeaponAnim, rightWeaponAnim;
-	public AudioSource audio;
+	public new AudioSource audio;
 
 	private KeyCode activateKey;
 
@@ -42,11 +42,22 @@ public class Player : MonoBehaviour
 		isOpeningDoor = false;
 
 		EventManager.HealthPickupEvent += ChangeHealth;
+
 	}
 
 	void ChangeHealth(int healthChange) {
 		life += healthChange;
 		EventManager.Instance.HealthChange();
+
+		if (life > 100) {
+			life = 100;
+		} else if (life < 1) {
+			Die ();
+		}
+	}
+
+	void Die () {
+		print ("YOU ARE DEAD");
 	}
 		
 	void Update () {

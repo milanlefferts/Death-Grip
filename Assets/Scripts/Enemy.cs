@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-
+	
 	private AudioSource audioSource;
 	private BoxCollider boxCollider;
-	private SpriteRenderer sprite;
+	//private SpriteRenderer sprite;
 	private Animator anim;
-	private Rigidbody rb;
+	//private Rigidbody rb;
 
 	public AudioClip enemyHit, enemyDeath;
 
 	private int life;
+	public int attackDamage;
 
 	void Start () {
 		
 		audioSource = GetComponent<AudioSource> ();
 		boxCollider = GetComponent<BoxCollider> ();
-		sprite = GetComponent<SpriteRenderer> ();
-		anim = GetComponent<Animator> ();
-		rb = GetComponent<Rigidbody> ();
+		//sprite = GetComponent<SpriteRenderer> ();
+		anim = GetComponentInChildren<Animator> ();
+		//rb = GetComponent<Rigidbody> ();
 
 		life = 4;
+		attackDamage = 10;
 	}
 		
 	public void EnemyTakeDamage(int damage) {
@@ -46,6 +48,13 @@ public class Enemy : MonoBehaviour {
 	private void Death () {
 
 		anim.SetTrigger("Death");
+
+		// Stop all movement on death
+		if (GetComponent<EnemyMovement> () != null) {
+			GetComponent <EnemyMovement> ().isActivated = false;
+		}
+
+		boxCollider.enabled = false;
 
 		audioSource.PlayOneShot (enemyDeath);
 
