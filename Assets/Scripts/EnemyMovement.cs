@@ -13,10 +13,12 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Movement
 	float movementSpeed;
+	private Vector3 lastKnowPlayerPosition;
 
 	// Charging
 	float minimumDistance;
 
+	public LayerMask layerMask;
 
 	public GameObject player;
 
@@ -31,20 +33,19 @@ public class EnemyMovement : MonoBehaviour {
 
 		agent = GetComponent<NavMeshAgent> ();
 	}
+		
 
 	// Checks to see if the player is in range
 	// If so, raycast until the player is seen, then activate this enemy
 	private IEnumerator AwaitActivation() {
 
-		while (!isActivated && !playerFound) {
-			RotateTowards(player.transform);
+		StartCoroutine (FindPlayer ());
 
-			FindPlayer ();
-
+		while (!isActivated) {
 			yield return null;
 		}
 
-		StartCoroutine (Charge ());
+		StartCoroutine (Movement ());
 	}
 
 	private IEnumerator CanSeePlayer() {
@@ -52,62 +53,101 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	// Moves the enemy in a random direction when it loses track of the player
-	private void FindPlayer() {
-		Vector3 rayDirection = player.transform.position - transform.position;
+	private IEnumerator FindPlayer() {
+		while (true) {
 
-		bool playerCloseToEnemy =  rayDirection.sqrMagnitude < detectionDistanceSquared;
-
-		if (playerCloseToEnemy) {
-			
-			Debug.DrawRay (transform.position, rayDirection);
-
-			RaycastHit hit;
-			if (Physics.Raycast (transform.position, rayDirection, out hit) && hit.collider.tag == "Player") {
-				isActivated = true;
-				playerFound = true;
-			} else {
-				isActivated = false;
-				playerFound = false;
-			}
-		}
-
-	}
-
-	// Charge moves the enemy towards the player
-	private IEnumerator Charge() {
-		print ("Start charing");
-		while (playerFound) {
 			RotateTowards(player.transform);
 
-			// Only moves if enemy is not too close to the player
-			if (Vector3.Distance (transform.position, player.transform.position) >= minimumDistance) {
+			Vector3 rayDirection = player.transform.position - transform.position;
 
-				// Move Enemy forward towards the player's position
-				agent.isStopped = false;
-				agent.SetDestination(player.transform.position);
-			}
-			// Else stop moving and Attack
-			else {
-				agent.isStopped = true;
+			bool playerCloseToEnemy =  rayDirection.sqrMagnitude < detectionDistanceSquared;
 
-				// If an Attack script is attached, 
-				if (GetComponent<EnemyAttack> () != null) {
-					// Start the Attack cycle, stop attacking when moving out of range or attack is interrupted
+			if (playerCloseToEnemy) {
 
-					IEnumerator newAttack = GetComponent <EnemyAttack> ().StartAttack();
-					StartCoroutine (newAttack);
+				Debug.DrawRay (transform.position, rayDirection);
 
-					while (GetComponent<EnemyAttack> ().isAttacking && Vector3.Distance (transform.position, player.transform.position) < minimumDistance) {
-						yield return null;
-					}
-					// Stop attacking
-					GetComponent<EnemyAttack> ().isAttacking = false;
-					StopCoroutine (newAttack);
+				RaycastHit hit;
+				if (Physics.Raycast (transform.position, rayDirection, out hit, layerMask) && hit.collider.tag == "Player") {
+					isActivated = true;
+					playerFound = true;
+					lastKnowPlayerPosition = player.transform.position;
+				} else {
+					//isActivated = false;
+					playerFound = false;
 				}
+
+
 			}
 
 			yield return null;
 		}
+
+
+	}
+
+	// Charge moves the enemy towards the player
+	private IEnumerator Movement() {
+		while (true) {
+
+			// Follow while the player is in view
+			while (playerFound) {
+				RotateTowards (player.transform);
+
+				// Only moves if enemy is not too close to the player
+				if (Vector3.Distance (transform.position, player.transform.position) >= minimumDistance) {
+
+					// Move Enemy forward towards the player's position
+					agent.isStopped = false;
+					agent.SetDestination (lastKnowPlayerPosition);
+				}
+			// Else stop moving and Attack
+			else {
+					agent.isStopped = true;
+
+					// If an Attack script is attached, 
+					if (GetComponent<EnemyAttack> () != null) {
+						// Start the Attack cycle, stop attacking when moving out of range or attack is interrupted
+
+						IEnumerator newAttack = GetComponent <EnemyAttack> ().StartAttack ();
+						StartCoroutine (newAttack);
+
+						while (GetComponent<EnemyAttack> ().isAttacking && Vector3.Distance (transform.position, player.transform.position) < minimumDistance) {
+							yield return null;
+						}
+						// Stop attacking
+						GetComponent<EnemyAttack> ().isAttacking = false;
+						StopCoroutine (newAttack);
+					}
+				}
+
+				yield return null;
+			}
+
+			// Wait until Enemy has approached last known player position
+			agent.isStopped = false;
+			agent.SetDestination (lastKnowPlayerPosition);
+			yield return new WaitForSeconds(1f);
+
+			// If player is still not found, wander around 'searching' for the player
+			while (!playerFound) {
+				
+				agent.SetDestination (RandomDirection ());
+				agent.speed = 1f;
+				yield return new WaitForSeconds(2f);
+			}
+		}
+
+
+	}
+
+	private Vector3 RandomDirection() {
+		Vector3 randomDirection = Random.insideUnitSphere * 5f;
+
+		randomDirection += transform.position;
+		NavMeshHit navHit;
+		NavMesh.SamplePosition (randomDirection, out navHit, 5f, -1);
+		print (navHit.position);
+		return navHit.position;
 	}
 
 	// Rotates this object's transform towards the position of the target
