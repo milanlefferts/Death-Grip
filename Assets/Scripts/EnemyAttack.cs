@@ -6,18 +6,31 @@ public class EnemyAttack : MonoBehaviour {
 	public bool isAttacking;
 	public float attackRate;
 	public int attackDamage;
+	public bool isMeleeAttack;
+
+	public Transform bulletSpawner;
+	public GameObject bullet;
+
+	private Animator anim;
 
 	void Start () {
-		attackRate = 2f;
-		attackDamage = 10;
+		anim = GetComponentInChildren<Animator> ();
+	
 	}
 
 	public IEnumerator StartAttack() {
 		if (!isAttacking) {
 			isAttacking = true;
+			anim.SetTrigger ("Attack");
 
 			while (isAttacking) {
-				EventManager.Instance.PlayerDamage(-attackDamage);
+				if (isMeleeAttack) {
+					EventManager.Instance.PlayerDamage (-attackDamage);
+				} else {
+					GameObject newProjectile = Instantiate(bullet, bulletSpawner.position, bulletSpawner.rotation);
+					newProjectile.GetComponent<ProjectileCollision>().damage = attackDamage;
+					newProjectile.GetComponent<ProjectileCollision> ().owner = this.gameObject.tag;
+				}
 				yield return new WaitForSeconds (attackRate);
 			}
 			isAttacking = false;

@@ -24,7 +24,10 @@ public class PlayerShooting : MonoBehaviour {
 
 	void Shoot () {
 		// Spawn projectile
-		Instantiate(projectile, arrowSpawner.position, arrowSpawner.rotation);
+		GameObject newProjectile = Instantiate(projectile, arrowSpawner.position, arrowSpawner.rotation);
+		newProjectile.GetComponent<ProjectileCollision>().damage = Player.Instance.GetWeaponDamage ();
+		newProjectile.GetComponent<ProjectileCollision> ().owner = this.gameObject.tag;
+
 
 		// Shake screen
 		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.01f, 0.1f));

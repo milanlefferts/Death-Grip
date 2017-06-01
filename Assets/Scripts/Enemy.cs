@@ -43,6 +43,11 @@ public class Enemy : MonoBehaviour {
 		anim.SetTrigger("Hit");
 
 		audioSource.PlayOneShot (enemyHit, 0.3f);
+
+		// Stop attacking on hit
+		if (GetComponent<EnemyAttack> () != null) {
+			GetComponent <EnemyAttack> ().isAttacking = false;
+		}
 	}
 
 	private void Death () {

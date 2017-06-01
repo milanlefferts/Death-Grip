@@ -13,7 +13,7 @@ public class ProjectileCollision : MonoBehaviour {
 
 	public float speed;
 	public int damage;
-
+	public string owner;
 	
 	void Start () {
 		audio = GetComponent<AudioSource> ();
@@ -26,33 +26,38 @@ public class ProjectileCollision : MonoBehaviour {
 		rb.velocity = transform.forward * speed;
 		rb.rotation = Quaternion.identity;
 
-		damage = Player.Instance.GetWeaponDamage ();
+		//damage = Player.Instance.GetWeaponDamage ();
 
 		StartCoroutine (SelfDestruct());
 	}
 
 	void OnTriggerEnter(Collider other) {
-
 		switch (other.tag) {
+		case "Player":
+			if (owner != "Player") {
+				anim.SetTrigger ("Impact");
+				PlayerImpact ();
+				StartCoroutine (DestroyProjectile ());
+				break;
+			}
+			break;
 		case "Enemy":
-			anim.SetTrigger ("Impact");
-
-			EnemyImpact (other.gameObject);
-			StartCoroutine (DestroyProjectile ());
+			if (owner != "Enemy") {
+				anim.SetTrigger ("Impact");
+				EnemyImpact (other.gameObject);
+				StartCoroutine (DestroyProjectile ());
+				break;
+			}
 			break;
 		case "Wall":
 			anim.SetTrigger ("Impact");
-
 			WallImpact ();
 			StartCoroutine (DestroyProjectile ());
 			break;
-
 		case "Grate":
 			sprite.sortingLayerName = "Wall";
 			break;
-
 		default:
-			
 			break;
 		}
 	}
@@ -73,9 +78,11 @@ public class ProjectileCollision : MonoBehaviour {
 	}
 
 	void EnemyImpact(GameObject enemy) {
-
-		// Enemy impact event
 		enemy.GetComponent<Enemy>().EnemyTakeDamage(damage);
+	}
+
+	void PlayerImpact() {
+		EventManager.Instance.PlayerDamage(-damage);
 	}
 
 	private IEnumerator SelfDestruct () {

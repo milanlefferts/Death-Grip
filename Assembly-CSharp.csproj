@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerShooting.cs" />
      <Compile Include="Assets\Scripts\ProjectileCollision.cs" />
+     <Compile Include="Assets\Scripts\ProjectileEnemy.cs" />
      <Compile Include="Assets\Scripts\ScreenShake.cs" />
      <Compile Include="Assets\Scripts\SpriteDirection.cs" />
      <Compile Include="Assets\Scripts\SpriteRotation.cs" />

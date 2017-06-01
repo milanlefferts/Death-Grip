@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Movement
 	private Vector3 lastKnowPlayerPosition;
-	private float minimumDistance;
+	public float minimumDistance;
 	private float playerSearchTime;
 	private float wanderDistance;
 	private float wanderDirectionTime;
@@ -22,18 +22,22 @@ public class EnemyMovement : MonoBehaviour {
 
 	public GameObject player;
 
-	NavMeshAgent agent;
+	private Animator anim;
+
+
+	private NavMeshAgent agent;
 
 	void Start () {
 		detectionDistance = 10f;
 		detectionDistanceSquared = detectionDistance * detectionDistance;
 		StartCoroutine (AwaitActivation());
 		StartCoroutine (RotateTowardsPlayer());
-		minimumDistance = 2f;
+		//minimumDistance = 2f;
 		playerSearchTime = 2f;
 		wanderDistance = 5f;
 		wanderDirectionTime = 2f;
 
+		anim = GetComponentInChildren<Animator> ();
 		agent = GetComponent<NavMeshAgent> ();
 	}
 
@@ -66,10 +70,10 @@ public class EnemyMovement : MonoBehaviour {
 					isActivated = true;
 					playerFound = true;
 					lastKnowPlayerPosition = player.transform.position;
-					print (hit.collider.name);
+					//print (hit.collider.name);
 
 				} else {
-					print (hit.collider.name);
+					//print (hit.collider.name);
 					//isActivated = false;
 					playerFound = false;
 				}
@@ -106,8 +110,11 @@ public class EnemyMovement : MonoBehaviour {
 							yield return null;
 						}
 						// Stop attacking
+
 						GetComponent<EnemyAttack> ().isAttacking = false;
 						StopCoroutine (newAttack);
+						anim.SetTrigger ("Walk");
+
 					}
 				}
 				yield return null;
@@ -138,7 +145,7 @@ public class EnemyMovement : MonoBehaviour {
 		randomDirection += transform.position;
 		NavMeshHit navHit;
 		NavMesh.SamplePosition (randomDirection, out navHit, wanderDistance, -1);
-		print (navHit.position);
+		//print (navHit.position);
 		return navHit.position;
 	}
 
