@@ -12,15 +12,14 @@ public class Player : MonoBehaviour
 	private static Player instance;
 
 	public int life;
-	private int weaponDamage;
 
 	public bool isMoving;
 
 	[SerializeField]
 	private bool isOpeningDoor;
 
-	public GameObject weapons, leftWeapon, rightWeapon;
-	private Animator weaponsAnim, leftWeaponAnim, rightWeaponAnim;
+	public GameObject weaponHolder;
+	public Animator weaponsAnim;
 	public AudioSource audioSource;
 
 	public AudioClip playerDamageSound;
@@ -31,16 +30,14 @@ public class Player : MonoBehaviour
 		instance = this;
 
 		// Weapons
-		weaponsAnim = weapons.GetComponent<Animator> ();
-		leftWeaponAnim = leftWeapon.GetComponent<Animator> ();
-		rightWeaponAnim = rightWeapon.GetComponent<Animator> ();
+		weaponsAnim = weaponHolder.GetComponent<Animator> ();
 
 		activateKey = KeyCode.E;
 
 		audioSource = GetComponent<AudioSource> ();
 
 		life = 100;
-		weaponDamage = 1;
+
 		isOpeningDoor = false;
 
 		EventManager.HealthPickupEvent += ChangeHealth;
@@ -76,13 +73,6 @@ public class Player : MonoBehaviour
 	void Update () {
 		CheckForMovement ();
 
-		if (Input.GetKeyDown (KeyCode.Mouse0)) {
-			leftWeaponAnim.SetTrigger ("Punch");
-		}
-
-		if (Input.GetKeyDown (KeyCode.Mouse1)) {
-			rightWeaponAnim.SetTrigger ("Punch");
-		}
 	}
 
 	void CheckForMovement () {
@@ -98,16 +88,8 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	// Weapon Damage getter
-	public int GetWeaponDamage() {
-		return weaponDamage;
-	}
-
 	public IEnumerator DoorOpener() {
 		if (!isOpeningDoor) {
-			
-			//print ("is opening door");
-
 			isOpeningDoor = true;
 
 			while (!Input.GetKeyDown(activateKey) || isOpeningDoor == false) {
@@ -117,10 +99,6 @@ public class Player : MonoBehaviour
 			isOpeningDoor = false;
 
 			EventManager.Instance.OpenDoor ();
-
-			//print ("gedrukt");
-
-
 		}
 	}
 
