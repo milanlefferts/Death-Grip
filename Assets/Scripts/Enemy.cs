@@ -51,8 +51,7 @@ public class Enemy : MonoBehaviour {
 
 		// Stop all movement on death
 		if (GetComponent<EnemyMovement> () != null) {
-			GetComponent <EnemyMovement> ().isActivated = false;
-
+			GetComponent <EnemyMovement> ().StopMovement ();
 		}
 
 		if (GetComponent<EnemyAttack> () != null) {

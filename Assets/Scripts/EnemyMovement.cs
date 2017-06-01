@@ -12,11 +12,11 @@ public class EnemyMovement : MonoBehaviour {
 	private float detectionDistance, detectionDistanceSquared;
 
 	// Movement
-	float movementSpeed;
 	private Vector3 lastKnowPlayerPosition;
-
-	// Charging
-	float minimumDistance;
+	private float minimumDistance;
+	private float playerSearchTime;
+	private float wanderDistance;
+	private float wanderDirectionTime;
 
 	public LayerMask layerMask;
 
@@ -25,39 +25,34 @@ public class EnemyMovement : MonoBehaviour {
 	NavMeshAgent agent;
 
 	void Start () {
-		detectionDistance = 5f;
+		detectionDistance = 10f;
 		detectionDistanceSquared = detectionDistance * detectionDistance;
 		StartCoroutine (AwaitActivation());
-		movementSpeed = 1f;
+		StartCoroutine (RotateTowardsPlayer());
 		minimumDistance = 2f;
+		playerSearchTime = 2f;
+		wanderDistance = 5f;
+		wanderDirectionTime = 2f;
 
 		agent = GetComponent<NavMeshAgent> ();
 	}
-		
 
 	// Checks to see if the player is in range
 	// If so, raycast until the player is seen, then activate this enemy
 	private IEnumerator AwaitActivation() {
 
-		StartCoroutine (FindPlayer ());
+		StartCoroutine ("FindPlayer");
 
 		while (!isActivated) {
 			yield return null;
 		}
 
-		StartCoroutine (Movement ());
+		StartCoroutine ("Movement");
 	}
 
-	private IEnumerator CanSeePlayer() {
-		yield return null;
-	}
-
-	// Moves the enemy in a random direction when it loses track of the player
+	// Casts a ray every frame, attempting to locate the player
 	private IEnumerator FindPlayer() {
 		while (true) {
-
-			RotateTowards(player.transform);
-
 			Vector3 rayDirection = player.transform.position - transform.position;
 
 			bool playerCloseToEnemy =  rayDirection.sqrMagnitude < detectionDistanceSquared;
@@ -67,32 +62,28 @@ public class EnemyMovement : MonoBehaviour {
 				Debug.DrawRay (transform.position, rayDirection);
 
 				RaycastHit hit;
-				if (Physics.Raycast (transform.position, rayDirection, out hit, layerMask) && hit.collider.tag == "Player") {
+				if (Physics.Raycast (transform.position, rayDirection, out hit, detectionDistance, layerMask) && hit.collider.tag == "Player") {
 					isActivated = true;
 					playerFound = true;
 					lastKnowPlayerPosition = player.transform.position;
+					print (hit.collider.name);
+
 				} else {
+					print (hit.collider.name);
 					//isActivated = false;
 					playerFound = false;
 				}
-
-
 			}
-
 			yield return null;
 		}
-
-
 	}
 
 	// Charge moves the enemy towards the player
 	private IEnumerator Movement() {
-		while (true) {
+		while (isActivated) {
 
 			// Follow while the player is in view
 			while (playerFound) {
-				RotateTowards (player.transform);
-
 				// Only moves if enemy is not too close to the player
 				if (Vector3.Distance (transform.position, player.transform.position) >= minimumDistance) {
 
@@ -100,14 +91,14 @@ public class EnemyMovement : MonoBehaviour {
 					agent.isStopped = false;
 					agent.SetDestination (lastKnowPlayerPosition);
 				}
-			// Else stop moving and Attack
-			else {
+				// Else stop moving and Attack
+				else {
 					agent.isStopped = true;
 
 					// If an Attack script is attached, 
 					if (GetComponent<EnemyAttack> () != null) {
+						
 						// Start the Attack cycle, stop attacking when moving out of range or attack is interrupted
-
 						IEnumerator newAttack = GetComponent <EnemyAttack> ().StartAttack ();
 						StartCoroutine (newAttack);
 
@@ -119,43 +110,46 @@ public class EnemyMovement : MonoBehaviour {
 						StopCoroutine (newAttack);
 					}
 				}
-
 				yield return null;
 			}
 
 			// Wait until Enemy has approached last known player position
 			agent.isStopped = false;
 			agent.SetDestination (lastKnowPlayerPosition);
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(playerSearchTime);
 
 			// If player is still not found, wander around 'searching' for the player
+			// Moves the enemy in a random direction when it loses track of the player
 			while (!playerFound) {
-				
 				agent.SetDestination (RandomDirection ());
-				agent.speed = 1f;
-				yield return new WaitForSeconds(2f);
+				yield return new WaitForSeconds(wanderDirectionTime);
 			}
 		}
+	}
 
-
+	public void StopMovement() {
+		isActivated = false;
+		StopAllCoroutines ();
 	}
 
 	private Vector3 RandomDirection() {
-		Vector3 randomDirection = Random.insideUnitSphere * 5f;
+		Vector3 randomDirection = Random.insideUnitSphere * wanderDistance;
 
 		randomDirection += transform.position;
 		NavMeshHit navHit;
-		NavMesh.SamplePosition (randomDirection, out navHit, 5f, -1);
+		NavMesh.SamplePosition (randomDirection, out navHit, wanderDistance, -1);
 		print (navHit.position);
 		return navHit.position;
 	}
 
 	// Rotates this object's transform towards the position of the target
-	private void RotateTowards(Transform target) {
-		
-		Vector3 direction = (target.position - transform.position).normalized;
-		Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+	private IEnumerator RotateTowardsPlayer () {
+		while (true) {
+			Vector3 direction = (player.transform.position - transform.position).normalized;
+			Quaternion lookRotation = Quaternion.LookRotation (new Vector3 (direction.x, 0, direction.z));
+			transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, Time.deltaTime * 10f);
+			yield return null;
+		}
 	}
 
 	/*

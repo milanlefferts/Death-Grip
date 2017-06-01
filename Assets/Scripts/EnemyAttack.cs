@@ -17,7 +17,6 @@ public class EnemyAttack : MonoBehaviour {
 			isAttacking = true;
 
 			while (isAttacking) {
-				print ("Attacked!");
 				EventManager.Instance.PlayerDamage(-attackDamage);
 				yield return new WaitForSeconds (attackRate);
 			}

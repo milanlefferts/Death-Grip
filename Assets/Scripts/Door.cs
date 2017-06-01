@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : MonoBehaviour {
 
@@ -10,11 +11,13 @@ public class Door : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip openDoorSound;
 	private BoxCollider otherCollider;
+	private NavMeshObstacle navObstacle;
 
 	void Start () {
 		isOpened = false;
 		anim = GetComponentInChildren<Animator> ();
 		audioSource = GetComponent<AudioSource> ();
+		navObstacle = GetComponent<NavMeshObstacle> ();
 	}
 
 	void OnTriggerEnter(Collider other) {

@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
 	void TakeDamage () {
 		EventManager.Instance.PlayerDamageUI();
 
-		audioSource.PlayOneShot(playerDamageSound);
+		audioSource.PlayOneShot(playerDamageSound, 0.3f);
 	}
 
 	void Die () {
