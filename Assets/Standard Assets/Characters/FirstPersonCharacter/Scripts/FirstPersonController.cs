@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
-    [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
@@ -39,8 +38,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+		// Custom
+		private bool playerIsAlive;
+
+		public void PlayerDeath() {
+			playerIsAlive = false;
+		}
+
         // Use this for initialization
-        private void Start()
+        void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -50,34 +56,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+			m_MouseLook.Init (transform, m_Camera.transform);
+
+			// Custom
+			playerIsAlive = true;
         }
 
-
-        // Update is called once per frame
         private void Update()
         {
-            RotateView();
-            // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = Input.GetButtonDown("Jump");
-            }
+			if (playerIsAlive) {
+				RotateView ();
+				// the jump state needs to read here to make sure it is not missed
+				if (!m_Jump) {
+					m_Jump = Input.GetButtonDown ("Jump");
+				}
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
-            {
-                PlayLandingSound();
-                m_MoveDir.y = 0f;
-                m_Jumping = false;
-            }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
-            {
-                m_MoveDir.y = 0f;
-            }
+				if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) {
+					PlayLandingSound ();
+					m_MoveDir.y = 0f;
+					m_Jumping = false;
+				}
+				if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
+					m_MoveDir.y = 0f;
+				}
 
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+				m_PreviouslyGrounded = m_CharacterController.isGrounded;
+			}
         }
-
 
         private void PlayLandingSound()
         {

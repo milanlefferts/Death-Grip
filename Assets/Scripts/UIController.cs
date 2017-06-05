@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
-	public GameObject imgObj, textObj,damageOverlayObj;
+	public GameObject imgObj, textObj,damageOverlayObj, deathText;
 	private Text text;
 	//private Image img;
 
 	void Start () {
 		text = textObj.GetComponent<Text> ();
-		//img = imgObj.GetComponent<Image> ();
 
 		EventManager.HealthChangeEvent += SetHealthText;
 
 		EventManager.PlayerDamageUIEvent += DamageTakenEffectWrapper;
 
+		EventManager.PlayerDeathEvent += Death;
 	}
 
 	private void SetHealthText() {
@@ -28,9 +28,21 @@ public class UIController : MonoBehaviour {
 
 	private IEnumerator DamageTakenEffect() {
 		damageOverlayObj.SetActive (true);
-		yield return new WaitForSeconds (0.1f);
+		yield return new WaitForSeconds (0.05f);
 		damageOverlayObj.SetActive (false);
-
 	}
 
+	private void Death() {
+		EventManager.HealthChangeEvent -= SetHealthText;
+		EventManager.PlayerDamageUIEvent -= DamageTakenEffectWrapper;
+
+		deathText.SetActive (true);
+		damageOverlayObj.SetActive (true);
+	}
+
+	void OnDestroy () {
+		EventManager.HealthChangeEvent -= SetHealthText;
+		EventManager.PlayerDamageUIEvent -= DamageTakenEffectWrapper;
+		EventManager.PlayerDeathEvent -= Death;
+	}
 }

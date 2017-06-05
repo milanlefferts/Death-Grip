@@ -63,17 +63,16 @@ public class WeaponController : MonoBehaviour {
 	private AudioClip projectileFireSound;
 	private Transform[] projectileSpawners;
 
-
 	[Header("Weapon Objects (assign manually")]
-
-
 	// Handgun
 	public GameObject handgunProjectile;
 	public AudioClip handgunSound;
 	public Sprite handgunSpriteLeft;
 	public Sprite handgunSpriteRight;
 	public Transform[] handgunSpawners;
+
 	public GameObject pushProjectile;
+	public Transform abilitySpawner;
 
 	// Shotgun
 	public GameObject shotgunProjectile;
@@ -91,7 +90,6 @@ public class WeaponController : MonoBehaviour {
 	public Transform[] grenadeLauncherSpawners;
 
 	void Start () {
-
 
 		leftWeaponSprite = leftWeapon.GetComponent<SpriteRenderer> ();
 		rightWeaponSprite = rightWeapon.GetComponent<SpriteRenderer> ();
@@ -175,22 +173,23 @@ public class WeaponController : MonoBehaviour {
 	}
 
 	void SetupWeapons() {
-		weaponList.Add(new Weapon("Handgun", 1, 0.2f, 0.2f, PushAbility, handgunProjectile, handgunSound, handgunSpriteLeft, handgunSpriteRight, handgunSpawners));
-		weaponList.Add(new Weapon("Shotgun", 2, 0.8f, 0.2f, PullAbility, shotgunProjectile, shotgunSound, shotgunSpriteLeft, shotgunSpriteRight, shotgunSpawners));
-		weaponList.Add(new Weapon("GrenadeLauncher", 4, 1.2f, 0.2f, PushAbility, grenadeLauncherProjectile, grenadeLauncherSound, grenadeLauncherSpriteLeft, grenadeLauncherSpriteRight, grenadeLauncherSpawners));
+		weaponList.Add(new Weapon("Handgun", 1, 0.2f, 1f, PushAbility, handgunProjectile, handgunSound, handgunSpriteLeft, handgunSpriteRight, handgunSpawners));
+		//weaponList.Add(new Weapon("Shotgun", 2, 0.8f, 0.2f, PullAbility, shotgunProjectile, shotgunSound, shotgunSpriteLeft, shotgunSpriteRight, shotgunSpawners));
+		//weaponList.Add(new Weapon("GrenadeLauncher", 4, 1.2f, 0.2f, PushAbility, grenadeLauncherProjectile, grenadeLauncherSound, grenadeLauncherSpriteLeft, grenadeLauncherSpriteRight, grenadeLauncherSpawners));
 
 		currentWeaponNr = 0;
 		SetWeapon (weaponList [currentWeaponNr]);
 	}
 
 	void PushAbility () {
-		GameObject newProjectile = Instantiate (pushProjectile, projectileSpawners[0].position, projectileSpawners[0].rotation);
-		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.05f, 0.2f));
+		GameObject newProjectile = Instantiate (pushProjectile, abilitySpawner.position, abilitySpawner.rotation);
+		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.1f, 0.2f));
+		Player.Instance.audioSource.PlayOneShot (grenadeLauncherSound);
 		print ("Push");
 	}
 
 	void PullAbility () {
-		GameObject newProjectile = Instantiate (pullProjectile, projectileSpawners[0].position, projectileSpawners[0].rotation);
+		GameObject newProjectile = Instantiate (pullProjectile, abilitySpawner.position, abilitySpawner.rotation);
 		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.05f, 0.2f));
 		print ("Pull");
 	}

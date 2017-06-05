@@ -59,4 +59,8 @@ public class Door : MonoBehaviour {
 		anim.SetTrigger ("Close");
 		audioSource.PlayOneShot (openDoorSound);
 	}
+
+	void OnDestroy () {
+		EventManager.OpenDoorEvent -= OpenDoorWrapper;
+	}
 }

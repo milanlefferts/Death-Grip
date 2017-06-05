@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour {
 	}
 		
 	public void EnemyTakeDamage(int damage) {
-		print ("lol");
 		life -= damage;
 
 		if (life > 0) {

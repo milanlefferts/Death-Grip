@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class EventManager : MonoBehaviour {
 
 	// Allows remote access for unique instance
@@ -39,6 +40,11 @@ public class EventManager : MonoBehaviour {
 		PlayerDamageUIEvent ();
 	}
 
+	public static event Action PlayerDeathEvent;
+	public void PlayerDeath() {
+		PlayerDeathEvent ();
+	}
+
 	public static event Action OpenDoorEvent;
 	public void OpenDoor() {
 		OpenDoorEvent ();
@@ -46,3 +52,4 @@ public class EventManager : MonoBehaviour {
 
 
 }
+
