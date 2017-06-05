@@ -21,13 +21,14 @@ public class EnemyMovement : MonoBehaviour {
 	public LayerMask layerMask;
 
 	public GameObject player;
-
+	private Rigidbody rb;
 	private Animator anim;
-
 
 	private NavMeshAgent agent;
 
 	void Start () {
+		//player = Player.Instance.gameObject;
+
 		detectionDistance = 10f;
 		detectionDistanceSquared = detectionDistance * detectionDistance;
 		StartCoroutine (AwaitActivation());
@@ -39,6 +40,7 @@ public class EnemyMovement : MonoBehaviour {
 
 		anim = GetComponentInChildren<Animator> ();
 		agent = GetComponent<NavMeshAgent> ();
+		rb = GetComponent<Rigidbody> ();
 	}
 
 	// Checks to see if the player is in range
@@ -159,9 +161,48 @@ public class EnemyMovement : MonoBehaviour {
 		}
 	}
 
-	/*
-	 * if (Vector3.Distance (transform.position, player.transform.position) <= MaxDist) {
-					//Here Call any function U want Like Shoot at here or something
-				} */
+	public IEnumerator EnemyPushed() {
+		StopCoroutine ("Movement");
+		agent.enabled = false;
+		rb.isKinematic = false;
+		rb.useGravity = true;
+
+		GetComponent<EnemyAttack> ().isAttacking = false;
+
+		//rb.AddExplosionForce (5f, transform.position, 3f);
+		rb.AddForce(-transform.forward * 750f);
+
+		yield return new WaitForSeconds (2f);
+
+		rb.isKinematic = true;
+		rb.useGravity = false;
+		//transform.rotation = Quaternion.identity;
+		rb.velocity = Vector3.zero;
+
+		agent.enabled = true;
+		StartCoroutine ("Movement");
+	}
+
+	public IEnumerator EnemyPulled() {
+		StopCoroutine ("Movement");
+		agent.enabled = false;
+		rb.isKinematic = false;
+		rb.useGravity = true;
+
+		GetComponent<EnemyAttack> ().isAttacking = false;
+
+		//rb.AddExplosionForce (5f, transform.position, 3f);
+		rb.AddForce(transform.forward * 750f);
+
+		yield return new WaitForSeconds (2f);
+
+		rb.isKinematic = true;
+		rb.useGravity = false;
+		//transform.rotation = Quaternion.identity;
+		rb.velocity = Vector3.zero;
+
+		agent.enabled = true;
+		StartCoroutine ("Movement");
+	}
 
 }

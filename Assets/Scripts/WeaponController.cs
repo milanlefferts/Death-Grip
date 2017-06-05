@@ -13,8 +13,9 @@ public class Weapon {
 	public AudioClip weaponFireSound;
 	public Sprite weaponSpriteLeft;
 	public Sprite weaponSpriteRight;
+	public Transform[] weaponProjectileSpawners;
 
-	public Weapon (string wName, int wDamage, float wFireRate, float wAbilityCooldown, Action wAbility, GameObject wProjectile, AudioClip wFireSound, Sprite wSpriteLeft, Sprite wSpriteRight) {
+	public Weapon (string wName, int wDamage, float wFireRate, float wAbilityCooldown, Action wAbility, GameObject wProjectile, AudioClip wFireSound, Sprite wSpriteLeft, Sprite wSpriteRight, Transform[] wProjectileSpawners) {
 		weaponName = wName;
 		weaponDamage = wDamage;
 		weaponFireRate = wFireRate;
@@ -24,6 +25,7 @@ public class Weapon {
 		weaponFireSound = wFireSound;
 		weaponSpriteLeft = wSpriteLeft;
 		weaponSpriteRight = wSpriteRight;
+		weaponProjectileSpawners = wProjectileSpawners;
 	}
 }
 
@@ -44,7 +46,7 @@ public class WeaponController : MonoBehaviour {
 	[Header("Weapon Attributes")]
 	// Weapon
 	private Weapon weapon;
-	//public GameObject weaponObject;
+
 	[SerializeField]
 	private string weaponName;
 	private Action Ability;
@@ -59,24 +61,34 @@ public class WeaponController : MonoBehaviour {
 
 	private GameObject projectile;
 	private AudioClip projectileFireSound;
+	private Transform[] projectileSpawners;
+
 
 	[Header("Weapon Objects (assign manually")]
-	public Transform projectileSpawner;
+
+
 	// Handgun
 	public GameObject handgunProjectile;
 	public AudioClip handgunSound;
 	public Sprite handgunSpriteLeft;
 	public Sprite handgunSpriteRight;
+	public Transform[] handgunSpawners;
+	public GameObject pushProjectile;
+
 	// Shotgun
 	public GameObject shotgunProjectile;
 	public AudioClip shotgunSound;
 	public Sprite shotgunSpriteLeft;
 	public Sprite shotgunSpriteRight;
+	public Transform[] shotgunSpawners;
+	public GameObject pullProjectile;
+
 	// GrenadeLauncher
 	public GameObject grenadeLauncherProjectile;
 	public AudioClip grenadeLauncherSound;
 	public Sprite grenadeLauncherSpriteLeft;
 	public Sprite grenadeLauncherSpriteRight;
+	public Transform[] grenadeLauncherSpawners;
 
 	void Start () {
 
@@ -159,24 +171,27 @@ public class WeaponController : MonoBehaviour {
 		leftWeaponSprite.sprite = weapon.weaponSpriteLeft;
 		rightWeaponAnim.SetTrigger (weaponName);
 		rightWeaponSprite.sprite = weapon.weaponSpriteRight;
+		projectileSpawners = weapon.weaponProjectileSpawners;
 	}
 
 	void SetupWeapons() {
-		weaponList.Add(new Weapon("Handgun", 1, 0.2f, 0.2f, FreezeAbility, handgunProjectile, handgunSound, handgunSpriteLeft, handgunSpriteRight));
-		weaponList.Add(new Weapon("Shotgun", 2, 0.8f, 0.2f, PullAbility, shotgunProjectile, shotgunSound, shotgunSpriteLeft, shotgunSpriteRight));
-		weaponList.Add(new Weapon("GrenadeLauncher", 4, 1.2f, 0.2f, PushAbility, grenadeLauncherProjectile, grenadeLauncherSound, grenadeLauncherSpriteLeft, grenadeLauncherSpriteRight));
+		weaponList.Add(new Weapon("Handgun", 1, 0.2f, 0.2f, PushAbility, handgunProjectile, handgunSound, handgunSpriteLeft, handgunSpriteRight, handgunSpawners));
+		weaponList.Add(new Weapon("Shotgun", 2, 0.8f, 0.2f, PullAbility, shotgunProjectile, shotgunSound, shotgunSpriteLeft, shotgunSpriteRight, shotgunSpawners));
+		weaponList.Add(new Weapon("GrenadeLauncher", 4, 1.2f, 0.2f, PushAbility, grenadeLauncherProjectile, grenadeLauncherSound, grenadeLauncherSpriteLeft, grenadeLauncherSpriteRight, grenadeLauncherSpawners));
 
 		currentWeaponNr = 0;
 		SetWeapon (weaponList [currentWeaponNr]);
 	}
 
 	void PushAbility () {
-		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.01f, 0.1f));
+		GameObject newProjectile = Instantiate (pushProjectile, projectileSpawners[0].position, projectileSpawners[0].rotation);
+		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.05f, 0.2f));
 		print ("Push");
 	}
 
 	void PullAbility () {
-		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.01f, 0.1f));
+		GameObject newProjectile = Instantiate (pullProjectile, projectileSpawners[0].position, projectileSpawners[0].rotation);
+		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.05f, 0.2f));
 		print ("Pull");
 	}
 
@@ -187,9 +202,11 @@ public class WeaponController : MonoBehaviour {
 
 	void Shoot () {
 		// Spawn projectile
-		GameObject newProjectile = Instantiate(projectile, projectileSpawner.position, projectileSpawner.rotation);
-		newProjectile.GetComponent<ProjectileCollision> ().damage = damage;
-		newProjectile.GetComponent<ProjectileCollision> ().owner = this.gameObject.tag;
+		foreach (Transform spawner in projectileSpawners) {
+			GameObject newProjectile = Instantiate (projectile, spawner.position, spawner.rotation);
+			newProjectile.GetComponent<ProjectileCollision> ().damage = damage;
+			newProjectile.GetComponent<ProjectileCollision> ().owner = this.gameObject.tag;
+		}
 
 		// Shake screen
 		StartCoroutine(ScreenShake.Instance.ScreenShaker (0.01f, 0.1f));

@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour {
 
 	public AudioClip enemyHit, enemyDeath;
 
-	private int life;
+	public int life;
 	public int attackDamage;
 
 	void Start () {
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour {
 	}
 		
 	public void EnemyTakeDamage(int damage) {
-
+		print ("lol");
 		life -= damage;
 
 		if (life > 0) {
