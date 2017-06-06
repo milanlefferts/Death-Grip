@@ -30,6 +30,13 @@ public class Weapon {
 }
 
 public class WeaponController : MonoBehaviour {
+	// Allows remote access for unique instance
+	public static WeaponController Instance {
+		get{
+			return instance;
+		}
+	}
+	private static WeaponController instance;
 
 	// Weapon Switching
 	public List<Weapon> weaponList = new List<Weapon>();
@@ -47,8 +54,7 @@ public class WeaponController : MonoBehaviour {
 	// Weapon
 	private Weapon weapon;
 
-	[SerializeField]
-	private string weaponName;
+	public string weaponName;
 	private Action Ability;
 
 	public int damage;
@@ -141,6 +147,8 @@ public class WeaponController : MonoBehaviour {
 			currentWeaponNr = 0;
 		}
 		SetWeapon(weaponList[currentWeaponNr]);
+		EventManager.Instance.WeaponSwitch ();
+
 	}
 
 	void PreviousWeapon () {
@@ -153,6 +161,8 @@ public class WeaponController : MonoBehaviour {
 			currentWeaponNr = weaponList.Count - 1;
 		}
 		SetWeapon(weaponList[currentWeaponNr]);
+		EventManager.Instance.WeaponSwitch ();
+
 	}
 
 	void SetWeapon (Weapon weap) {
@@ -170,10 +180,11 @@ public class WeaponController : MonoBehaviour {
 		rightWeaponAnim.SetTrigger (weaponName);
 		rightWeaponSprite.sprite = weapon.weaponSpriteRight;
 		projectileSpawners = weapon.weaponProjectileSpawners;
+
 	}
 
 	void SetupWeapons() {
-		weaponList.Add(new Weapon("Handgun", 1, 0.2f, 1f, PushAbility, handgunProjectile, handgunSound, handgunSpriteLeft, handgunSpriteRight, handgunSpawners));
+		weaponList.Add(new Weapon("Push", 1, 0.2f, 1f, PushAbility, handgunProjectile, handgunSound, handgunSpriteLeft, handgunSpriteRight, handgunSpawners));
 		//weaponList.Add(new Weapon("Shotgun", 2, 0.8f, 0.2f, PullAbility, shotgunProjectile, shotgunSound, shotgunSpriteLeft, shotgunSpriteRight, shotgunSpawners));
 		//weaponList.Add(new Weapon("GrenadeLauncher", 4, 1.2f, 0.2f, PushAbility, grenadeLauncherProjectile, grenadeLauncherSound, grenadeLauncherSpriteLeft, grenadeLauncherSpriteRight, grenadeLauncherSpawners));
 

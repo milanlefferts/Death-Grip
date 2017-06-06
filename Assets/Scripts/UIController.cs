@@ -5,22 +5,26 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
-	public GameObject imgObj, textObj,damageOverlayObj, deathText;
-	private Text text;
+	public GameObject lifeImgObj, lifeTextObj, damageOverlayObj, deathText, weaponImgObj, weaponTextObj;
+	private Text lifeText, weaponText;
 	//private Image img;
 
 	void Start () {
-		text = textObj.GetComponent<Text> ();
+		lifeText = lifeTextObj.GetComponent<Text> ();
+		weaponText = weaponTextObj.GetComponent<Text> ();
 
 		EventManager.HealthChangeEvent += SetHealthText;
-
 		EventManager.PlayerDamageUIEvent += DamageTakenEffectWrapper;
-
 		EventManager.PlayerDeathEvent += Death;
+		EventManager.WeaponSwitchEvent += WeaponSwitch;
+	}
+
+	private void WeaponSwitch() {
+		weaponText.text = WeaponController.Instance.weaponName;
 	}
 
 	private void SetHealthText() {
-		text.text = Player.Instance.life + "";
+		lifeText.text = Player.Instance.life + "";
 	}
 
 	private void DamageTakenEffectWrapper() {
@@ -44,5 +48,6 @@ public class UIController : MonoBehaviour {
 		EventManager.HealthChangeEvent -= SetHealthText;
 		EventManager.PlayerDamageUIEvent -= DamageTakenEffectWrapper;
 		EventManager.PlayerDeathEvent -= Death;
+		EventManager.WeaponSwitchEvent -= WeaponSwitch;
 	}
 }

@@ -50,6 +50,11 @@ public class EventManager : MonoBehaviour {
 		OpenDoorEvent ();
 	}
 
+	public static event Action WeaponSwitchEvent;
+	public void WeaponSwitch() {
+		WeaponSwitchEvent ();
+	}
+
 
 }
 
